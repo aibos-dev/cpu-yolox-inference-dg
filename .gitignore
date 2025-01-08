@@ -6,6 +6,9 @@ YOLOX_outputs/
 sample_video/
 datasets/
 output/
+YOLOX_1/
+weights/
+
 # do not ignore datasets under yolox/data
 !*yolox/data/datasets/
 

@@ -164,9 +164,7 @@ class IntegratedPredictor:
         with torch.no_grad():
             try:
                 outputs = self.model(img_tensor)
-                # Debug raw model outputs
-                #logger.debug(f"Raw model output shape: {outputs[0].shape if isinstance(outputs, tuple) else outputs.shape}")
-
+            
                 from yolox.utils import postprocess
                 
                 # Run YOLOX postprocessing
@@ -179,7 +177,6 @@ class IntegratedPredictor:
                 )
                 
                 if outputs[0] is not None:
-                    #logger.debug(f"Number of detections: {len(outputs[0])}")
                     # Scale boxes back to original size
                     outputs[0][:, 0:4] /= img_info["ratio"]
                 else:
@@ -220,7 +217,7 @@ class IntegratedPredictor:
             y1 = int(box[3])
 
             # Draw box
-            color = (0, 255, 0)  # You can create different colors for different classes
+            color = (0, 255, 0)  
             cv2.rectangle(vis_img, (x0, y0), (x1, y1), color, 2)
             
             # Draw label
@@ -382,7 +379,7 @@ class IntegratedModelEvaluator:
                 return predictor
 
             else:
-                # Handle other YOLO variants
+                # Handle any other YOLO variants
                 try:
                     from ultralytics import YOLO
                 except ImportError:
@@ -422,7 +419,6 @@ class IntegratedModelEvaluator:
         
             try:
                 # Sample frames evenly
-                
                 # Modified sampling logic to ensure we always get some frames
                 target_percentage = 0.25  # Process 25% of frames
                 min_frames = 40  # Minimum frames to process
