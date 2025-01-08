@@ -3,7 +3,9 @@
 
 # user experiments directory
 YOLOX_outputs/
+sample_video/
 datasets/
+output/
 # do not ignore datasets under yolox/data
 !*yolox/data/datasets/
 
@@ -226,3 +228,5 @@ events.out.tfevents*
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+README.md
